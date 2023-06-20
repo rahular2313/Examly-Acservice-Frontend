@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<h1>Booking</h1>
+<form [formGroup]="dashboardForm" (ngSubmit)="onSubmit()" class="dashboard-form">
+  <div class="form-group">
+    <label for="deviceType">Device Type:</label>
+    <input type="text" id="deviceType" formControlName="deviceType" class="form-control">
+    <div *ngIf="f.deviceType.touched && f.deviceType.errors" class="error-message">
+      <div *ngIf="f.deviceType.errors.required">Device Name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="deviceName">Device Brand:</label>
+    <input type="text" id="deviceName" formControlName="deviceName" class="form-control">
+    <div *ngIf="f.deviceName.touched && f.deviceName.errors" class="error-message">
+      <div *ngIf="f.deviceName.errors.required">Device Name is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="deviceModel">Device Model:</label>
+    <input type="text" id="deviceModel" formControlName="deviceModel" class="form-control">
+    <div *ngIf="f.deviceModel.touched && f.deviceModel.errors" class="error-message">
+      <div *ngIf="f.deviceModel.errors.required">Device Model is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="problem">Problem:</label>
+    <textarea id="problem" formControlName="problem" class="form-control"></textarea>
+    <div *ngIf="f.problem.touched && f.problem.errors" class="error-message">
+      <div *ngIf="f.problem.errors.required">Problem is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="date">Date:</label>
+    <input type="date" id="date" formControlName="date" class="form-control">
+    <div *ngIf="f.date.touched && f.date.errors" class="error-message">
+      <div *ngIf="f.date.errors.required">Date is required</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="timeSlot">Time Slot:</label>
+    <select id="timeSlot" formControlName="timeSlot" class="form-control">
+      <option value="" disabled>Select a time slot</option>
+      <option value="Morning">Morning (9 AM to 12 PM)</option>
+      <option value="Afternoon">Afternoon (12 PM to 4 PM)</option>
+      <option value="Evening">Evening (5 PM to 7 PM)</option>
+    </select>
+    <div *ngIf="f.timeSlot.touched && f.timeSlot.errors" class="error-message">
+      <div *ngIf="f.timeSlot.errors.required">Time Slot is required</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="dashboardForm.invalid" class="submit-button">Submit</button>
+</form>
+
+
+<app-footer></app-footer>

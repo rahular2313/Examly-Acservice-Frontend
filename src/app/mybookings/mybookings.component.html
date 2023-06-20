@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+<h1>My Bookings</h1>
+
+<div *ngIf="bookings.length === 0; else bookingsTable">
+  <p style="text-align: center;color: brown;margin-top: 5%;font-style: italic;">No bookings available.</p>
+</div>
+
+<ng-template #bookingsTable>
+  <table class="my-bookings-table">
+    <thead>
+      <tr>
+        <th>Serial Number</th>
+        <th>Device Type</th>
+        <th>Device Brand</th>
+        <th>Device Model</th>
+        <th>Problem</th>
+        <th>Date</th>
+        <th>Time Slot</th>
+        <th>Status</th>
+        <th>Cancel Booking</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{booking.deviceType}}</td>
+        <td>{{ booking.deviceName }}</td>
+        <td>{{ booking.deviceModel }}</td>
+        <td>{{ booking.problem }}</td>
+        <td>{{ booking.date }}</td>
+        <td>{{ booking.timeSlot }}</td>
+        <td>booked</td>
+        <td><button class="delete-button" (click)="deleteBooking(i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-template><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<app-footer></app-footer>
