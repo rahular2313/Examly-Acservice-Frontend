@@ -30,8 +30,8 @@ export class LoginComponent implements OnInit {
       else
       {
         console.log("Login not sucessfull");
-       alert("Worng email or Password!");
-        
+       alert("Invalid User!!");
+
       }
 
     });
