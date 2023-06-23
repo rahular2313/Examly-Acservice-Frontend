@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,10 +10,29 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent  {
   forgotForm: FormGroup | any;
+  email: any;
+  password: any;
+  constructor(private formBuilder: FormBuilder,private router: Router,private http:HttpClient) { }
+  forgetPassword() { const url = 'http://localhost:8080/register/forgetpassword';
+  const options = {
+    params: {
+      email: this.email,
+      newPassword: this.password
+    }
+  };
 
+  this.http.post(url, null, { params: options.params, responseType: 'text' })
+  .subscribe(
+    response => {
+      console.log('Password changed successfully:', response);
+      this.router.navigate(['/home']);
+    },
+    error => {
+      console.log('Error:', error);
+    }
+  );
 
-  constructor(private formBuilder: FormBuilder,private router: Router) { }
-
+}
   ngOnInit() {
     this.forgotForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email, this.validateEmail]],

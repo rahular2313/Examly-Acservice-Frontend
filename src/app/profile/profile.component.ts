@@ -11,10 +11,8 @@ export class ProfileComponent {
     email: 'john@example.com',
     phoneNumber: '9876789345',
   };
-  
 
   editProfile() {
   }
 
- 
 }
