@@ -12,6 +12,7 @@ export class ForgotPasswordComponent  {
   forgotForm: FormGroup | any;
   email: any;
   password: any;
+  
   constructor(private formBuilder: FormBuilder,private router: Router,private http:HttpClient) { }
   forgetPassword() { const url = 'http://localhost:8080/register/forgetpassword';
   const options = {
@@ -31,7 +32,6 @@ export class ForgotPasswordComponent  {
       console.log('Error:', error);
     }
   );
-
 }
   ngOnInit() {
     this.forgotForm = this.formBuilder.group({
